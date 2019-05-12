@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import ProductCardGroup from '../components/ProductCardGroup';
 import CurrencySelector from '../components/CurrencySelector';
 import fetchMockProductData from '../__mocks__/productData';
@@ -65,16 +64,26 @@ class Index extends Component {
     return (
       <div>
         <h1>Home</h1>
-        <CurrencySelector
-          onChange={this.handleCurrencyChange}
-          currency={currency}
-          options={Object.keys(currencyData)}
-        />
-        <ProductCardGroup
-          currency={currency}
-          exchangeRate={exchangeRate}
-          productData={productData}
-        />
+        <form className="form" action="">
+          <div className="form-group mb-3">
+            <CurrencySelector
+              className="form-control"
+              onChange={this.handleCurrencyChange}
+              currency={currency}
+              options={Object.keys(currencyData)}
+            />
+          </div>
+          <ProductCardGroup
+            currency={currency}
+            exchangeRate={exchangeRate}
+            productData={productData}
+          />
+          <div className="form-group mt-3">
+            <button type="submit" className="btn btn-primary">
+              Checkout
+            </button>
+          </div>
+        </form>
       </div>
     );
   }
